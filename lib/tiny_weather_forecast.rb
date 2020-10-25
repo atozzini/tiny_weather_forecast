@@ -4,7 +4,7 @@ require 'json'
 module TinyWeatherForecast
   attr_reader :authentication_token, :base_url
 
-  def initialize(authentication_token, city, country)
+  def initialize(authentication_token, city)
     @authentication_token = authentication_token
     @city = city
     @base_url = 'https://api.openweathermap.org/data/2.5/onecall?'
