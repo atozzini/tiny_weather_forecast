@@ -8,3 +8,5 @@ gem 'geocoder', '1.6.4'
 
 # Requests
 gem 'rest-client', '2.1.0'
+
+gem 'byebug', '11.1.3'

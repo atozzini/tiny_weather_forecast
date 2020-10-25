@@ -1,27 +1,33 @@
 require "tiny_weather_forecast/version"
 require 'json'
+require 'rest-client'
+require 'geocoder'
+require 'byebug'
+
 
 module TinyWeatherForecast
-  def forecast(authentication_token, city)
-    resp = RestClient.get "#{base_url}lat=#{lat}&lon=#{lon}&appid=#{authentication_token}"
-    puts JSON.parse(resp.body)
-  end
+  class Forecast
+    def forecast(authentication_token, city)
+      resp = RestClient.get "#{base_url}lat=#{lat(city)}&lon=#{lon(city)}&appid=#{authentication_token}"
+      puts JSON.parse(resp.body)
+    end
 
-  private
+    private
 
-  def base_url
-    'https://api.openweathermap.org/data/2.5/onecall?'
-  end
+    def base_url
+      'https://api.openweathermap.org/data/2.5/onecall?'
+    end
 
-  def location
-    Geocoder.search(@city).first.coordinates
-  end
+    def location(city)
+      Geocoder.search(city).first.coordinates
+    end
 
-  def lat
-    location.first
-  end
+    def lat(city)
+      location(city).first
+    end
 
-  def lon
-    location.last
+    def lon(city)
+      location(city).last
+    end
   end
 end
