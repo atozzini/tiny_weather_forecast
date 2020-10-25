@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["alexandre.tozzini@gmail.com"]
 
   spec.summary       = 'A tiny gem to get weather forecast'
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/atozzini/tiny_weather_forecast"
 
   spec.metadata["homepage_uri"] = spec.homepage
 
