@@ -4,6 +4,7 @@ require 'rest-client'
 require 'geocoder'
 require 'byebug'
 require 'dotenv/load'
+require 'active_support/core_ext'
 
 
 module TinyWeatherForecast
@@ -17,31 +18,30 @@ module TinyWeatherForecast
       resp = RestClient.get complete_url
       json = JSON.parse(resp.body)
 
-      message = create_message(json)
+      message = create_message(json['daily'])
     end
 
     def create_message(json)
-      current = json['daily'].first
+      current = json.first
       current_date = convert_date(current['dt'])
       current_temp = (current['temp']['min'] + current['temp']['max'] / 2).to_i
       current_weather = current['weather'].first['description']
 
-      "#{current_temp}°C e #{current_weather} em #{@city} em #{current_date}. Média para os próximos dias: " + second_message(json)
+      "#{current_temp}°C e #{current_weather} em #{@city.titleize} em #{current_date}. Média para os próximos dias: " + second_message(json)
     end
 
     def second_message(json)
-      daily = json['daily']
       message = ''
       cont = 0
 
-      daily.first(6).each do |daily|
-        next if cont == 0
-        debugger
-        temp = (current['temp']['min'] + current['temp']['max'] / 2).to_i
-        date = convert_date(daily['dt'])
-        message += "#{temp}°C em #{date}"
-        cont == 5 ? message += '.' : message += ', '
+      json.first(6).each do |json|
         cont += 1
+        next if cont == 1
+
+        temp = (json['temp']['min'] + json['temp']['max'] / 2).to_i
+        date = convert_date(json['dt'])
+        message += "#{temp}°C em #{date}"
+        cont == 6 ? message += '.' : message += ', '
       end
 
       message
