@@ -9,4 +9,7 @@ gem 'geocoder', '1.6.4'
 # Requests
 gem 'rest-client', '2.1.0'
 
+#Debug
 gem 'byebug', '11.1.3'
+
+gem 'dotenv', '2.7.6'
