@@ -9,9 +9,10 @@ require 'active_support/core_ext'
 
 module TinyWeatherForecast
   class Forecast
-    def initialize(city)
+    def initialize(city, appid, geocoder_key)
       @city = city
-      @appid = ENV['OPEN_WEATHER_FORECAST_KEY']
+      @appid = appid
+      @geocoder_key = geocoder_key
     end
 
     def forecast
@@ -70,6 +71,12 @@ module TinyWeatherForecast
     end
 
     def location
+      Geocoder.configure(
+        timeout: 10,
+        lookup: :google,
+        api_key: @geocoder_key
+      )
+
       Geocoder.search(@city).first.coordinates
     end
 
