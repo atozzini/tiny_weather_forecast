@@ -4,7 +4,7 @@ This Gem should be used to obtain the weather forecast for a city, from the curr
 
 Gem will return a message as shown below:
 
-`25°C e chuva moderada em Itapira em 03/11. Média para os próximos dias: 26°C em 04/11, 27°C em 05/11, 27°C em 06/11, 29°C em 07/11, 36°C em 08/11.`
+    $ 25°C e chuva moderada em Itapira em 03/11. Média para os próximos dias: 26°C em 04/11, 27°C em 05/11, 27°C em 06/11, 29°C em 07/11, 36°C em 08/11.
 
 ## Installation
 
