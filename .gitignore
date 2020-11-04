@@ -16,5 +16,4 @@
 #build
 *.gem
 
-
 .byebug_history

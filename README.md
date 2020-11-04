@@ -50,7 +50,7 @@ To use in your project, you can do the following thing
   <tr>
     <td><code>geocoder_key</code></td>
     <td><code>string</code></td>
-    <td>Pass your Geocoder key fro Geocoder of Google</td>
+    <td>Pass your Geocoder key from Geocoder of Google</td>
   </tr>
 </table>
 

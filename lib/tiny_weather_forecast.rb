@@ -3,7 +3,6 @@ require 'json'
 require 'rest-client'
 require 'geocoder'
 require 'byebug'
-require 'dotenv/load'
 require 'active_support/core_ext'
 
 
